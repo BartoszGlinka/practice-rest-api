@@ -5,6 +5,9 @@
     "uuid": "^8.3.0",
     "yyid": "^2.0.0"
   },
+  "engines": {
+    "node": "10.x"
+  }
   "scripts": {
     "start": "nodemon server.js",
     "build": "cd client && yarn install && yarn build"
