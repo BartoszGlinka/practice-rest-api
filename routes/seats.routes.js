@@ -15,12 +15,14 @@ router.route('/seatsss/random').get((req, res) => {
 })
 
 router.route('/seats').post((req, res) => {
-    const {author,text} = req.body;
+    const {day, client, email, seat} = req.body;
     const id = db.seats.length + 1;
-
-    db.seats.push({id, author, text});
-
-    res.json({ message: 'OK' });
+    if (db.seats.some(concert => concert.day === day && concert.seat === seat))
+        res.json({ message: 'This seat is already taken...' });
+    else {
+        db.seats.push({id, day, seat, client, email });
+        res.json({ message: 'OK' });
+    }
 })
 
 router.route('/seats/:id').put((req, res) => {
