@@ -1,0 +1,13 @@
+const mongoose = require('mongoose');
+
+const seatSchema = new mongoose.Schema({
+    id: { type: Number, required: true },
+    day: { type: Number, required: true },
+    seat: { type: Number, required: true },
+    seat: { type: String, required: true },
+    email: { type: String, required: true }
+});
+
+mongoose.model('Seat', seatSchema);
+
+module.exports = mongoose.model('Seat', seatSchema);

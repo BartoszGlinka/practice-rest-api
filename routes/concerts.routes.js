@@ -1,43 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
 
-router.route('/concerts').get((req, res) => {
-    res.json(db.concerts);
-});
+const ConcertsController = require('../controllers/concerts.controllers');
 
-router.route('/concerts/:id').get((req, res) => {
-    res.json(db.concerts.find(item => item.id == req.params.id));
-})
+router.get('/concerts', ConcertsController.getAll);
 
-router.route('/concertsss/random').get((req, res) => {
-    res.json(db.concerts[Math.floor(Math.random() * db.concerts.length)]);
-})
+router.get('/concerts/:id', ConcertsController.getOne);
 
-router.route('/concerts').post((req, res) => {
-    const {author,text} = req.body;
-    const id = db.concerts.length + 1;
+router.get('/concertsss/random', ConcertsController.getRandom);
 
-    db.concerts.push({id, author, text});
+router.post('/concerts', ConcertsController.addNew);
 
-    res.json({ message: 'OK' });
-})
+router.put('/concerts/:id', ConcertsController.updateOne);
 
-router.route('/concerts/:id').put((req, res) => {
-    const { author, text } = req.body;
-    const concerts = db.concerts.find(item => item.id == req.params.id);
-
-    concerts.author = author;
-    concerts.text = text;
-
-    res.json({ message: 'OK' });
-})
-
-router.route('/concerts/:id').delete((req, res) => {
-
-    db.concerts.splice(db.concerts.find(item => item.id == req.params.id), 1);
-
-    res.json({ message: 'OK' });
-})
-
-module.exports = router;
+router.delete('/concerts/:id', ConcertsController.deleteOne);
