@@ -15,3 +15,5 @@ router.post('/seats', SeatController.addNew);
 router.put('/seats/:id', SeatController.updateOne);
 
 router.delete('/seats/:id', SeatController.deleteOne);
+
+module.exports = router;

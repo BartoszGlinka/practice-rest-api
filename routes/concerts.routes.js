@@ -14,3 +14,5 @@ router.post('/concerts', ConcertsController.addNew);
 router.put('/concerts/:id', ConcertsController.updateOne);
 
 router.delete('/concerts/:id', ConcertsController.deleteOne);
+
+module.exports = router;

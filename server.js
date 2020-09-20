@@ -15,7 +15,7 @@ const socket = require('socket.io');
 const io = socket(server);
 
 /*NewWaveDB connetion*/
-mongoose.connect('mongodb://localhost:27017/NewWaveDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb+srv://BartoszG:11Kwietnia@cluster0.elp3x.mongodb.net/NewWaveDB?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
 const db = mongoose.connection;
 
 db.once('open', () => {

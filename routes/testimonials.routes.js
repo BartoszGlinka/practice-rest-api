@@ -15,3 +15,5 @@ router.post('/testimonials', TestimonialsController.addNew);
 router.put('/testimonials/:id', TestimonialsController.updateOne);
 
 router.delete('/testimonials/:id', TestimonialsController.deleteOne);
+
+module.exports = router;
