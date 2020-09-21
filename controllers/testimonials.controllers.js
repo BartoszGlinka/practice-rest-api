@@ -58,6 +58,7 @@ exports.updateOne = async (req, res) => {
       const dep = await(Testimonial.findById(req.params.id));
       if(dep) {
         await Testimonial.updateOne({ _id: req.params.id }, { $set: {id: id, author: author, text: text}});
+        res.json({ message: 'OK' });  
       }
       else res.status(404).json({ message: 'Not found...' });
     }
@@ -72,6 +73,7 @@ exports.deleteOne = async (req, res) => {
       const dep = await(Testimonial.findById(req.params.id));
       if(dep) {
         await Testimonial.deleteOne({ _id: req.params.id });
+        res.json({ message: 'OK' });  
       }
       else res.status(404).json({ message: 'Not found...' });
     }

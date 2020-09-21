@@ -58,6 +58,7 @@ exports.updateOne = async (req, res) => {
       const dep = await(Seat.findById(req.params.id));
       if(dep) {
         await Seat.updateOne({ _id: req.params.id }, { $set: {id: id, day: day, seat: seat, client: client, email: email }});
+        res.json({ message: 'OK' });  
       }
       else res.status(404).json({ message: 'Not found...' });
     }
@@ -72,6 +73,7 @@ exports.deleteOne = async (req, res) => {
       const dep = await(Seat.findById(req.params.id));
       if(dep) {
         await Seat.deleteOne({ _id: req.params.id });
+        res.json({ message: 'OK' });  
       }
       else res.status(404).json({ message: 'Not found...' });
     }

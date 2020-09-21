@@ -58,6 +58,7 @@ exports.updateOne = async (req, res) => {
       const dep = await(Concert.findById(req.params.id));
       if(dep) {
         await Concert.updateOne({ _id: req.params.id }, { $set: {id: id, performer: performer, genre: genre, price: price, day: day, image: image  }});
+        res.json({ message: 'OK' });  
       }
       else res.status(404).json({ message: 'Not found...' });
     }
@@ -72,6 +73,7 @@ exports.deleteOne = async (req, res) => {
       const dep = await(Concert.findById(req.params.id));
       if(dep) {
         await Concert.deleteOne({ _id: req.params.id });
+        res.json({ message: 'OK' });  
       }
       else res.status(404).json({ message: 'Not found...' });
     }
