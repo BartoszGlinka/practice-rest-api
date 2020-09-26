@@ -5,6 +5,7 @@ const path = require('path');
 const server = app.listen(process.env.PORT || 8000, () => {
   console.log('Server is running on port: 8000');
 });
+module.exports = server;
 const mongoose = require('mongoose');
 
 const testimonials = require('./routes/testimonials.routes');

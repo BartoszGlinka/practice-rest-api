@@ -20,7 +20,7 @@ class SeatChooser extends React.Component {
   isTaken = (seatId) => {
     const { seats, chosenDay } = this.props;
 
-    return (seats.some(item => (item.seat === seatId && item.day === chosenDay)));
+    return (seats.some(item => (parseInt(item.seat) === seatId && item.day === chosenDay)));
   }
   counterSeats = () => {
     const { seats, chosenDay } = this.props;
