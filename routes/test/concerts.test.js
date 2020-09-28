@@ -24,11 +24,12 @@ describe('concert / performer, genre, price , day/', () => {
      await Concert.deleteMany();
     });
 
-    it('/ should return all departments', async () => {
+    it('/ should return all concert with one performer', async () => {
 
         const res = await request(server).get('api/concerts/performer/:performer');
         expect(res.status).to.be.equal(200);
-      
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.not.be.null;
     });
 
       
